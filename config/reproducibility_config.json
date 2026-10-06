@@ -1,0 +1,383 @@
+{
+  "package": "PQGuard-MC machine-readable reproducibility configuration",
+  "package_version": "1.0",
+  "dataset": {
+    "dataset": "SEED-PQD-v1",
+    "indexing_convention": "0-based row indices within each class CSV",
+    "class_order": [
+      "Pure_Sinusoidal",
+      "Sag",
+      "Swell",
+      "Interruption",
+      "Transient",
+      "Oscillatory_Transient",
+      "Harmonics",
+      "Harmonics_with_Sag",
+      "Harmonics_with_Swell",
+      "Flicker",
+      "Flicker_with_Sag",
+      "Flicker_with_Swell",
+      "Sag_with_Oscillatory_Transient",
+      "Swell_with_Oscillatory_Transient",
+      "Sag_with_Harmonics",
+      "Swell_with_Harmonics",
+      "Notch"
+    ],
+    "number_of_classes": 17,
+    "signals_per_class": 1000,
+    "total_signals": 17000,
+    "samples_per_signal": 100,
+    "total_waveform_samples": 1700000,
+    "dataset_sampling_frequency_Hz": 5000,
+    "fundamental_frequency_Hz": 50,
+    "signal_duration_ms": 20,
+    "cycles_per_signal": 1,
+    "tuning_subset_size": 100,
+    "heldout_subset_size": 16900,
+    "tuning_allocation_by_class": {
+      "Pure_Sinusoidal": 20,
+      "Sag": 20,
+      "Swell": 20,
+      "Harmonics": 20,
+      "Sag_with_Harmonics": 10,
+      "Swell_with_Harmonics": 10
+    }
+  },
+  "system": {
+    "simulation_frequency_Hz": 20000,
+    "sampling_period_s": 5e-05,
+    "samples_per_grid_cycle": 400,
+    "grid_frequency_Hz": 50,
+    "grid_line_line_RMS_V": 415.0,
+    "nominal_phase_RMS_V": 239.6003617136947,
+    "nominal_phase_peak_V": 338.84608108500635,
+    "PV_rated_W": 8000.0,
+    "PV_temperature_coefficient_per_C": -0.004,
+    "load_fundamental_current_peak_A": 26.0,
+    "load_phase_angle_deg": 25.0,
+    "matrix_converter_states": 27,
+    "series": {
+      "transformation_ratio": 1.4,
+      "L_H": 0.002,
+      "C_F": 4e-05,
+      "R_ohm": 1.0
+    },
+    "shunt": {
+      "transformation_ratio": 1.4,
+      "L_H": 0.006,
+      "R_ohm": 0.15,
+      "current_normalization_base_A": 30.0
+    },
+    "synchronization": {
+      "method": "robust positive-sequence tracking",
+      "positive_sequence_lowpass_tau_s": 0.012,
+      "frequency_smoothing_tau_s": 0.02
+    },
+    "three_phase_construction": "balanced positive-sequence reconstruction from single-phase SEED-PQD-v1 waveform"
+  },
+  "proposed_controller": {
+    "name": "Adaptive Reduced-Set Horizon-2 FCS-MPC",
+    "prediction_horizon_steps": 2,
+    "first_step_candidate_states": 27,
+    "series": {
+      "retained_candidates": 6,
+      "horizon_weight_gamma": 0.15,
+      "switching_transition_penalty": 5e-05,
+      "CMV_penalty": 0.0002,
+      "adaptive_magnitude_gain": 0.035,
+      "adaptive_magnitude_tau_s": 0.01,
+      "magnitude_correction_clip_fraction_of_phase_peak": 0.08,
+      "tracking_gate_denominator": 0.002,
+      "clean_grid_deadband_pu": 0.0025,
+      "clean_grid_deadband_tau_s": 0.001,
+      "bypass_state_index": 0,
+      "candidate_evaluations_per_update": 189
+    },
+    "shunt": {
+      "retained_candidates": 4,
+      "horizon_weight_gamma": 1.2,
+      "switching_transition_penalty": 0.0001,
+      "CMV_penalty": 0.0001,
+      "tracking_gate_denominator": 0.004,
+      "candidate_evaluations_per_update": 135,
+      "PV_feedforward": true,
+      "active_power_lowpass_tau_s": 0.02
+    },
+    "exhaustive_H2_candidate_evaluations": 756,
+    "series_evaluation_reduction_percent": 75.0,
+    "shunt_evaluation_reduction_percent": 82.14
+  },
+  "internal_baselines": {
+    "SRF_PI": {
+      "series_voltage_loop": {
+        "Kp": 0.8,
+        "Ki": 120.0
+      },
+      "shunt_current_loop": {
+        "Kp": 0.65,
+        "Ki": 95.0
+      },
+      "same_plant_sampling_and_references": true
+    },
+    "Deadbeat_Predictive": {
+      "prediction_horizon_steps": 1,
+      "tracking_weight": 1.0,
+      "series_switching_penalty": 5e-05,
+      "shunt_switching_penalty": 0.0001,
+      "series_CMV_penalty": 0.0002,
+      "shunt_CMV_penalty": 0.0001,
+      "same_plant_sampling_and_references": true
+    },
+    "One_Step_FCS_MPC": {
+      "prediction_horizon_steps": 1,
+      "candidate_states": 27,
+      "tracking_weight": 1.0,
+      "series_switching_penalty": 5e-05,
+      "shunt_switching_penalty": 0.0001,
+      "series_CMV_penalty": 0.0002,
+      "shunt_CMV_penalty": 0.0001,
+      "same_plant_sampling_and_references": true
+    }
+  },
+  "recent_baseline": {
+    "name": "Model-Free Predictive Direct Control [21]",
+    "coordinates": "stationary_alpha_beta",
+    "series_ultra_local_gain_lambda": 20.0,
+    "shunt_ultra_local_gain_delta": 125.0,
+    "series_ESO_beta1": 0.8,
+    "series_ESO_beta2": 6.5,
+    "shunt_ESO_beta1": 0.2,
+    "shunt_ESO_beta2": 1.8,
+    "sampling_frequency_Hz": 20000,
+    "sampling_period_s": 5e-05,
+    "matrix_state_mapping": "minimum squared alpha-beta voltage-vector error over all 27 admissible states",
+    "series_reference": "generated from synchronized load-voltage target using the series-current reference equation",
+    "shunt_reference": "active-power-based synchronized current reference with zero reactive-power target",
+    "ESO_initialization": "zero",
+    "plant_state_initialization": "measured/zero numerical state at k=0",
+    "heldout_retuning": "none",
+    "excluded_RS_H2_features": [
+      "Horizon-2 reduced search",
+      "adaptive magnitude restoration",
+      "switching-transition penalty",
+      "CMV penalty",
+      "clean-grid deadband"
+    ]
+  },
+  "protocols": {
+    "Protocol_A": {
+      "name": "Six-condition held-out composite evaluation",
+      "purpose": [
+        "main internal baseline comparison",
+        "headline results in Abstract and Conclusion"
+      ],
+      "sequence_order": [
+        "Pure_Sinusoidal",
+        "Sag",
+        "Swell",
+        "Harmonics",
+        "Sag_with_Harmonics",
+        "Swell_with_Harmonics"
+      ],
+      "cycles_per_condition": 5,
+      "selection_pool": "16,900-signal held-out set",
+      "selection_method": "one held-out waveform per class using a separate numpy Generator seeded with 42",
+      "selection_seed": 42,
+      "sample_indices_0_based": {
+        "Pure_Sinusoidal": 89,
+        "Sag": 776,
+        "Swell": 651,
+        "Harmonics": 437,
+        "Sag_with_Harmonics": 432,
+        "Swell_with_Harmonics": 858
+      },
+      "reported_proposed_results": {
+        "V_THD_pct": 0.5487,
+        "I_THD_pct": 0.8149,
+        "PF": 0.9508,
+        "PQI": 3.9475
+      }
+    },
+    "Protocol_B": {
+      "name": "Fixed composite disturbance sequence",
+      "purpose": [
+        "component ablation",
+        "same-platform comparison with recent model-free predictive controller"
+      ],
+      "sequence_order": [
+        "Pure_Sinusoidal",
+        "Sag",
+        "Swell",
+        "Harmonics",
+        "Sag_with_Harmonics",
+        "Swell_with_Harmonics"
+      ],
+      "cycles_per_condition": 5,
+      "selection_method": "fixed sample row 0 for each listed class in the supplied Code.ipynb",
+      "sample_indices_0_based": {
+        "Pure_Sinusoidal": 0,
+        "Sag": 0,
+        "Swell": 0,
+        "Harmonics": 0,
+        "Sag_with_Harmonics": 0,
+        "Swell_with_Harmonics": 0
+      },
+      "reported_proposed_results": {
+        "V_THD_pct": 0.5259,
+        "I_THD_pct": 0.7626,
+        "PF": 0.9514,
+        "PQI": 3.8254
+      }
+    },
+    "distinction": "Protocols A and B use the same six disturbance categories but different signal realizations and must not be pooled."
+  },
+  "random_seeds": {
+    "global_seed": 42,
+    "split_seed": 42,
+    "statistical_trial_seed": 42,
+    "protocol_A_composite_seed": 42,
+    "bootstrap_base_seed": 42,
+    "procedures": {
+      "tuning_split": "np.random.default_rng(42); classes processed in CLASS_ORDER; class-specific tuning allocation sampled without replacement",
+      "protocol_A": "new np.random.default_rng(42); one held-out index selected sequentially for each class in MAIN_SCENARIOS",
+      "paired_trials": "new np.random.default_rng(42); five held-out indices selected without replacement for each class in STAT_CLASSES",
+      "bootstrap": "2500 paired resamples; seed = 42 + hypothesis_id_zero_based, giving seeds 42 through 50 for the nine tests"
+    }
+  },
+  "statistics": {
+    "paired_classes": [
+      "Sag",
+      "Swell",
+      "Harmonics",
+      "Sag_with_Harmonics",
+      "Swell_with_Harmonics"
+    ],
+    "samples_per_class": 5,
+    "total_paired_trials": 25,
+    "paired_trial_indices_0_based": {
+      "Sag": [
+        89,
+        431,
+        436,
+        652,
+        774
+      ],
+      "Swell": [
+        91,
+        522,
+        733,
+        758,
+        974
+      ],
+      "Harmonics": [
+        182,
+        369,
+        447,
+        497,
+        838
+      ],
+      "Sag_with_Harmonics": [
+        225,
+        442,
+        449,
+        543,
+        820
+      ],
+      "Swell_with_Harmonics": [
+        165,
+        275,
+        630,
+        824,
+        854
+      ]
+    },
+    "test": "one-sided paired Wilcoxon signed-rank",
+    "alternative": "greater for baseline-minus-proposed differences",
+    "alpha": 0.05,
+    "holm_family": {
+      "number_of_hypotheses": 9,
+      "metrics": [
+        "I_THD_pct",
+        "RMS_Error_pct",
+        "PQI"
+      ],
+      "baselines": [
+        "SRF-PI",
+        "Deadbeat-Predictive",
+        "1-Step-FCS"
+      ]
+    },
+    "bootstrap": {
+      "resamples": 2500,
+      "confidence_interval_percent": 95,
+      "percentiles": [
+        2.5,
+        97.5
+      ],
+      "base_seed": 42,
+      "per_hypothesis_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "statistic": "median paired difference"
+    },
+    "effect_size": "rank-biserial correlation",
+    "scope_statement": "Inferential results apply only to the 25 matched held-out trials."
+  },
+  "metrics": {
+    "THD_percent": "100 * sqrt(sum(harmonic_RMS[h]^2 for h=2..25)) / fundamental_RMS",
+    "V_THD_pct": "mean of three phase voltage THD values",
+    "I_THD_pct": "mean of three phase current THD values",
+    "RMS_Error_pct": "mean_phase(abs(V_RMS - V_nominal)/V_nominal*100)",
+    "PF": "three-phase active power divided by apparent power as implemented in the notebook",
+    "PQI": "V_THD_pct + I_THD_pct + RMS_Error_pct + 50*(1-PF)",
+    "Multiobjective_Index": "PQI + 0.014*(series_transition_kHz + shunt_transition_kHz) + 0.001*(series_CMV_RMS_V + shunt_CMV_RMS_V)",
+    "switching_activity": "switching-state transition rate, not semiconductor switching frequency",
+    "CMV": "RMS common-mode voltage derived from the selected switching states"
+  },
+  "reported_results": {
+    "Protocol_A_main_internal_baseline": {
+      "proposed": {
+        "V_THD_pct": 0.5487,
+        "I_THD_pct": 0.8149,
+        "RMS_Error_pct": 0.1126,
+        "PF": 0.9508,
+        "PQI": 3.9475,
+        "Multiobjective_Index": 4.6483,
+        "State_Transition_Rate_kHz": 15.7214,
+        "Series_CMV_RMS_V": 160.4372,
+        "Shunt_CMV_RMS_V": 101.5284,
+        "Runtime_s": 4.3618
+      }
+    },
+    "Protocol_B_full_proposed": {
+      "V_THD_pct": 0.5259,
+      "I_THD_pct": 0.7626,
+      "RMS_Error_pct": 0.1093,
+      "PF": 0.9514,
+      "PQI": 3.8254,
+      "Multiobjective_Index": 4.5221,
+      "State_Transition_Rate_kHz": 15.603,
+      "Series_CMV_RMS_V": 158.848,
+      "Shunt_CMV_RMS_V": 100.9867
+    },
+    "Protocol_B_recent_baseline": {
+      "V_THD_pct": 0.5984,
+      "I_THD_pct": 1.0837,
+      "RMS_Error_pct": 0.1186,
+      "PF": 0.9506,
+      "PQI": 4.2158,
+      "State_Transition_Rate_kHz": 16.02,
+      "Series_CMV_RMS_V": 176.42,
+      "Shunt_CMV_RMS_V": 101.74,
+      "Runtime_s": 2.91
+    }
+  }
+}

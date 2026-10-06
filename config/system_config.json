@@ -1,0 +1,32 @@
+{
+  "simulation_frequency_Hz": 20000,
+  "sampling_period_s": 5e-05,
+  "samples_per_grid_cycle": 400,
+  "grid_frequency_Hz": 50,
+  "grid_line_line_RMS_V": 415.0,
+  "nominal_phase_RMS_V": 239.6003617136947,
+  "nominal_phase_peak_V": 338.84608108500635,
+  "PV_rated_W": 8000.0,
+  "PV_temperature_coefficient_per_C": -0.004,
+  "load_fundamental_current_peak_A": 26.0,
+  "load_phase_angle_deg": 25.0,
+  "matrix_converter_states": 27,
+  "series": {
+    "transformation_ratio": 1.4,
+    "L_H": 0.002,
+    "C_F": 4e-05,
+    "R_ohm": 1.0
+  },
+  "shunt": {
+    "transformation_ratio": 1.4,
+    "L_H": 0.006,
+    "R_ohm": 0.15,
+    "current_normalization_base_A": 30.0
+  },
+  "synchronization": {
+    "method": "robust positive-sequence tracking",
+    "positive_sequence_lowpass_tau_s": 0.012,
+    "frequency_smoothing_tau_s": 0.02
+  },
+  "three_phase_construction": "balanced positive-sequence reconstruction from single-phase SEED-PQD-v1 waveform"
+}

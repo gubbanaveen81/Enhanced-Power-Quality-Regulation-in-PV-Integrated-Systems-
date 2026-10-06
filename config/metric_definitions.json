@@ -1,0 +1,11 @@
+{
+  "THD_percent": "100 * sqrt(sum(harmonic_RMS[h]^2 for h=2..25)) / fundamental_RMS",
+  "V_THD_pct": "mean of three phase voltage THD values",
+  "I_THD_pct": "mean of three phase current THD values",
+  "RMS_Error_pct": "mean_phase(abs(V_RMS - V_nominal)/V_nominal*100)",
+  "PF": "three-phase active power divided by apparent power as implemented in the notebook",
+  "PQI": "V_THD_pct + I_THD_pct + RMS_Error_pct + 50*(1-PF)",
+  "Multiobjective_Index": "PQI + 0.014*(series_transition_kHz + shunt_transition_kHz) + 0.001*(series_CMV_RMS_V + shunt_CMV_RMS_V)",
+  "switching_activity": "switching-state transition rate, not semiconductor switching frequency",
+  "CMV": "RMS common-mode voltage derived from the selected switching states"
+}

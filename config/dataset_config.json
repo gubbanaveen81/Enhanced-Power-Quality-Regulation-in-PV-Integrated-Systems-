@@ -1,0 +1,42 @@
+{
+  "dataset": "SEED-PQD-v1",
+  "indexing_convention": "0-based row indices within each class CSV",
+  "class_order": [
+    "Pure_Sinusoidal",
+    "Sag",
+    "Swell",
+    "Interruption",
+    "Transient",
+    "Oscillatory_Transient",
+    "Harmonics",
+    "Harmonics_with_Sag",
+    "Harmonics_with_Swell",
+    "Flicker",
+    "Flicker_with_Sag",
+    "Flicker_with_Swell",
+    "Sag_with_Oscillatory_Transient",
+    "Swell_with_Oscillatory_Transient",
+    "Sag_with_Harmonics",
+    "Swell_with_Harmonics",
+    "Notch"
+  ],
+  "number_of_classes": 17,
+  "signals_per_class": 1000,
+  "total_signals": 17000,
+  "samples_per_signal": 100,
+  "total_waveform_samples": 1700000,
+  "dataset_sampling_frequency_Hz": 5000,
+  "fundamental_frequency_Hz": 50,
+  "signal_duration_ms": 20,
+  "cycles_per_signal": 1,
+  "tuning_subset_size": 100,
+  "heldout_subset_size": 16900,
+  "tuning_allocation_by_class": {
+    "Pure_Sinusoidal": 20,
+    "Sag": 20,
+    "Swell": 20,
+    "Harmonics": 20,
+    "Sag_with_Harmonics": 10,
+    "Swell_with_Harmonics": 10
+  }
+}

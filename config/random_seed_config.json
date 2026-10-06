@@ -1,0 +1,13 @@
+{
+  "global_seed": 42,
+  "split_seed": 42,
+  "statistical_trial_seed": 42,
+  "protocol_A_composite_seed": 42,
+  "bootstrap_base_seed": 42,
+  "procedures": {
+    "tuning_split": "np.random.default_rng(42); classes processed in CLASS_ORDER; class-specific tuning allocation sampled without replacement",
+    "protocol_A": "new np.random.default_rng(42); one held-out index selected sequentially for each class in MAIN_SCENARIOS",
+    "paired_trials": "new np.random.default_rng(42); five held-out indices selected without replacement for each class in STAT_CLASSES",
+    "bootstrap": "2500 paired resamples; seed = 42 + hypothesis_id_zero_based, giving seeds 42 through 50 for the nine tests"
+  }
+}

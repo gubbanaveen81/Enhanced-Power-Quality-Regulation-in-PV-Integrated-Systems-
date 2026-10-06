@@ -1,0 +1,32 @@
+{
+  "SRF_PI": {
+    "series_voltage_loop": {
+      "Kp": 0.8,
+      "Ki": 120.0
+    },
+    "shunt_current_loop": {
+      "Kp": 0.65,
+      "Ki": 95.0
+    },
+    "same_plant_sampling_and_references": true
+  },
+  "Deadbeat_Predictive": {
+    "prediction_horizon_steps": 1,
+    "tracking_weight": 1.0,
+    "series_switching_penalty": 5e-05,
+    "shunt_switching_penalty": 0.0001,
+    "series_CMV_penalty": 0.0002,
+    "shunt_CMV_penalty": 0.0001,
+    "same_plant_sampling_and_references": true
+  },
+  "One_Step_FCS_MPC": {
+    "prediction_horizon_steps": 1,
+    "candidate_states": 27,
+    "tracking_weight": 1.0,
+    "series_switching_penalty": 5e-05,
+    "shunt_switching_penalty": 0.0001,
+    "series_CMV_penalty": 0.0002,
+    "shunt_CMV_penalty": 0.0001,
+    "same_plant_sampling_and_references": true
+  }
+}

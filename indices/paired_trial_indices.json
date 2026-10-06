@@ -1,0 +1,42 @@
+{
+  "indexing_convention": "0-based row indices within each class CSV",
+  "selection_seed": 42,
+  "total": 25,
+  "indices_by_class": {
+    "Sag": [
+      89,
+      431,
+      436,
+      652,
+      774
+    ],
+    "Swell": [
+      91,
+      522,
+      733,
+      758,
+      974
+    ],
+    "Harmonics": [
+      182,
+      369,
+      447,
+      497,
+      838
+    ],
+    "Sag_with_Harmonics": [
+      225,
+      442,
+      449,
+      543,
+      820
+    ],
+    "Swell_with_Harmonics": [
+      165,
+      275,
+      630,
+      824,
+      854
+    ]
+  }
+}

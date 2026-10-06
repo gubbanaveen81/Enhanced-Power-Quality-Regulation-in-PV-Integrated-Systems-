@@ -1,0 +1,25 @@
+{
+  "name": "Model-Free Predictive Direct Control [21]",
+  "coordinates": "stationary_alpha_beta",
+  "series_ultra_local_gain_lambda": 20.0,
+  "shunt_ultra_local_gain_delta": 125.0,
+  "series_ESO_beta1": 0.8,
+  "series_ESO_beta2": 6.5,
+  "shunt_ESO_beta1": 0.2,
+  "shunt_ESO_beta2": 1.8,
+  "sampling_frequency_Hz": 20000,
+  "sampling_period_s": 5e-05,
+  "matrix_state_mapping": "minimum squared alpha-beta voltage-vector error over all 27 admissible states",
+  "series_reference": "generated from synchronized load-voltage target using the series-current reference equation",
+  "shunt_reference": "active-power-based synchronized current reference with zero reactive-power target",
+  "ESO_initialization": "zero",
+  "plant_state_initialization": "measured/zero numerical state at k=0",
+  "heldout_retuning": "none",
+  "excluded_RS_H2_features": [
+    "Horizon-2 reduced search",
+    "adaptive magnitude restoration",
+    "switching-transition penalty",
+    "CMV penalty",
+    "clean-grid deadband"
+  ]
+}

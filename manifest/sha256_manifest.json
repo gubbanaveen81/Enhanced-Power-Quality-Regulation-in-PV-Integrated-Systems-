@@ -1,0 +1,99 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "63c6893f11de4e2a2a51d535d1c82fa6293a8d2f4205ab796164d502d3180979",
+      "size_bytes": 1224
+    },
+    {
+      "path": "config/dataset_config.json",
+      "sha256": "7c2ac3b363c52e03cfca29f5f83eb48695e296ceba571f1f9c2152abd9b81386",
+      "size_bytes": 1035
+    },
+    {
+      "path": "config/internal_baselines_config.json",
+      "sha256": "13cbf597b19ec15472f74b2c62274134be969130eae07914b3adeeed56cda2d4",
+      "size_bytes": 808
+    },
+    {
+      "path": "config/metric_definitions.json",
+      "sha256": "16eed5f84bc9a4da864efa864767ac27448cd629fadf0c9957d73d202e252ee9",
+      "size_bytes": 737
+    },
+    {
+      "path": "config/proposed_controller_config.json",
+      "sha256": "71e44316ceb20450d9db20b70e6926084689535d6ccc4432006f8d9e2a222f09",
+      "size_bytes": 1050
+    },
+    {
+      "path": "config/protocols_config.json",
+      "sha256": "89ab093e65ad8837a50c9e4ef0186ac83dcc75695300c4194332194376ee0f65",
+      "size_bytes": 1859
+    },
+    {
+      "path": "config/random_seed_config.json",
+      "sha256": "fe52dcd09df66755d832dcbc0eb77a348d5830bef03b902de5c70746ad689ce5",
+      "size_bytes": 696
+    },
+    {
+      "path": "config/recent_baseline_config.json",
+      "sha256": "00d49d5d947522ea5cde2cba09e57f335fe8b5ab3620bf241791dcdaef9bfe5c",
+      "size_bytes": 1003
+    },
+    {
+      "path": "config/reported_results.json",
+      "sha256": "e1daef617bf18251f25a0262a1fcd5c894b1ad8192b97f134fe8e6b6c24b7466",
+      "size_bytes": 952
+    },
+    {
+      "path": "config/reproducibility_config.json",
+      "sha256": "74cfddb137222b7a1dac934967b583b0a583f94196b4e510556a32d47eb8ffd2",
+      "size_bytes": 11566
+    },
+    {
+      "path": "config/statistics_config.json",
+      "sha256": "583de4bccfa26682e8fcbab4ae008221bd55263c0ed9af8a3bbfa7f78224aa36",
+      "size_bytes": 1445
+    },
+    {
+      "path": "config/system_config.json",
+      "sha256": "24ae4ae618e4e4cb36fb5488e94733e76d10c1cb8485e5da9f88d26d7ef304fa",
+      "size_bytes": 940
+    },
+    {
+      "path": "implementation/Code_original.ipynb",
+      "sha256": "4e1787b713c88bfdec9f91dbd6b4b883b9110164397bfbd9a768143f15d019e1",
+      "size_bytes": 3259066
+    },
+    {
+      "path": "implementation/PQGuard_MC_Revised_Test.ipynb",
+      "sha256": "29897275bedfe9b8ffd17d8fdf08a513077362a3d72f040319cc6b87f0fe9581",
+      "size_bytes": 172992
+    },
+    {
+      "path": "indices/heldout_indices.json",
+      "sha256": "0f0e7d98bb19385719942964c75c53c87b8cdb27f66a9951df000bd177a0b173",
+      "size_bytes": 184686
+    },
+    {
+      "path": "indices/paired_trial_indices.json",
+      "sha256": "504524b00bd3f2d4876ee7d0877086a5d9db4eba2c2af3264afd7cec54111d81",
+      "size_bytes": 547
+    },
+    {
+      "path": "indices/protocol_a_indices.json",
+      "sha256": "73e4bec3f771c0851c0f92e9ab07d259cf5ee7169255ac5858367977541edee2",
+      "size_bytes": 271
+    },
+    {
+      "path": "indices/protocol_b_indices.json",
+      "sha256": "d23fbf00af6ed3e972331a726048a70d08f785a06e17ed0e7e1dc0fc71a250c6",
+      "size_bytes": 280
+    },
+    {
+      "path": "indices/tuning_indices.json",
+      "sha256": "179e2a2ff717c85cacb454af1b30bfd34c4c54a52703bfdd3889264f51213c5c",
+      "size_bytes": 1694
+    }
+  ]
+}

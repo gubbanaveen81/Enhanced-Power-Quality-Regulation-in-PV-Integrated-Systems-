@@ -1,0 +1,87 @@
+{
+  "paired_classes": [
+    "Sag",
+    "Swell",
+    "Harmonics",
+    "Sag_with_Harmonics",
+    "Swell_with_Harmonics"
+  ],
+  "samples_per_class": 5,
+  "total_paired_trials": 25,
+  "paired_trial_indices_0_based": {
+    "Sag": [
+      89,
+      431,
+      436,
+      652,
+      774
+    ],
+    "Swell": [
+      91,
+      522,
+      733,
+      758,
+      974
+    ],
+    "Harmonics": [
+      182,
+      369,
+      447,
+      497,
+      838
+    ],
+    "Sag_with_Harmonics": [
+      225,
+      442,
+      449,
+      543,
+      820
+    ],
+    "Swell_with_Harmonics": [
+      165,
+      275,
+      630,
+      824,
+      854
+    ]
+  },
+  "test": "one-sided paired Wilcoxon signed-rank",
+  "alternative": "greater for baseline-minus-proposed differences",
+  "alpha": 0.05,
+  "holm_family": {
+    "number_of_hypotheses": 9,
+    "metrics": [
+      "I_THD_pct",
+      "RMS_Error_pct",
+      "PQI"
+    ],
+    "baselines": [
+      "SRF-PI",
+      "Deadbeat-Predictive",
+      "1-Step-FCS"
+    ]
+  },
+  "bootstrap": {
+    "resamples": 2500,
+    "confidence_interval_percent": 95,
+    "percentiles": [
+      2.5,
+      97.5
+    ],
+    "base_seed": 42,
+    "per_hypothesis_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "statistic": "median paired difference"
+  },
+  "effect_size": "rank-biserial correlation",
+  "scope_statement": "Inferential results apply only to the 25 matched held-out trials."
+}

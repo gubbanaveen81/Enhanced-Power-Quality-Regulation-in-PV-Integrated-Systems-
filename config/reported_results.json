@@ -1,0 +1,38 @@
+{
+  "Protocol_A_main_internal_baseline": {
+    "proposed": {
+      "V_THD_pct": 0.5487,
+      "I_THD_pct": 0.8149,
+      "RMS_Error_pct": 0.1126,
+      "PF": 0.9508,
+      "PQI": 3.9475,
+      "Multiobjective_Index": 4.6483,
+      "State_Transition_Rate_kHz": 15.7214,
+      "Series_CMV_RMS_V": 160.4372,
+      "Shunt_CMV_RMS_V": 101.5284,
+      "Runtime_s": 4.3618
+    }
+  },
+  "Protocol_B_full_proposed": {
+    "V_THD_pct": 0.5259,
+    "I_THD_pct": 0.7626,
+    "RMS_Error_pct": 0.1093,
+    "PF": 0.9514,
+    "PQI": 3.8254,
+    "Multiobjective_Index": 4.5221,
+    "State_Transition_Rate_kHz": 15.603,
+    "Series_CMV_RMS_V": 158.848,
+    "Shunt_CMV_RMS_V": 100.9867
+  },
+  "Protocol_B_recent_baseline": {
+    "V_THD_pct": 0.5984,
+    "I_THD_pct": 1.0837,
+    "RMS_Error_pct": 0.1186,
+    "PF": 0.9506,
+    "PQI": 4.2158,
+    "State_Transition_Rate_kHz": 16.02,
+    "Series_CMV_RMS_V": 176.42,
+    "Shunt_CMV_RMS_V": 101.74,
+    "Runtime_s": 2.91
+  }
+}

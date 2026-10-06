@@ -1,0 +1,67 @@
+{
+  "Protocol_A": {
+    "name": "Six-condition held-out composite evaluation",
+    "purpose": [
+      "main internal baseline comparison",
+      "headline results in Abstract and Conclusion"
+    ],
+    "sequence_order": [
+      "Pure_Sinusoidal",
+      "Sag",
+      "Swell",
+      "Harmonics",
+      "Sag_with_Harmonics",
+      "Swell_with_Harmonics"
+    ],
+    "cycles_per_condition": 5,
+    "selection_pool": "16,900-signal held-out set",
+    "selection_method": "one held-out waveform per class using a separate numpy Generator seeded with 42",
+    "selection_seed": 42,
+    "sample_indices_0_based": {
+      "Pure_Sinusoidal": 89,
+      "Sag": 776,
+      "Swell": 651,
+      "Harmonics": 437,
+      "Sag_with_Harmonics": 432,
+      "Swell_with_Harmonics": 858
+    },
+    "reported_proposed_results": {
+      "V_THD_pct": 0.5487,
+      "I_THD_pct": 0.8149,
+      "PF": 0.9508,
+      "PQI": 3.9475
+    }
+  },
+  "Protocol_B": {
+    "name": "Fixed composite disturbance sequence",
+    "purpose": [
+      "component ablation",
+      "same-platform comparison with recent model-free predictive controller"
+    ],
+    "sequence_order": [
+      "Pure_Sinusoidal",
+      "Sag",
+      "Swell",
+      "Harmonics",
+      "Sag_with_Harmonics",
+      "Swell_with_Harmonics"
+    ],
+    "cycles_per_condition": 5,
+    "selection_method": "fixed sample row 0 for each listed class in the supplied Code.ipynb",
+    "sample_indices_0_based": {
+      "Pure_Sinusoidal": 0,
+      "Sag": 0,
+      "Swell": 0,
+      "Harmonics": 0,
+      "Sag_with_Harmonics": 0,
+      "Swell_with_Harmonics": 0
+    },
+    "reported_proposed_results": {
+      "V_THD_pct": 0.5259,
+      "I_THD_pct": 0.7626,
+      "PF": 0.9514,
+      "PQI": 3.8254
+    }
+  },
+  "distinction": "Protocols A and B use the same six disturbance categories but different signal realizations and must not be pooled."
+}
